@@ -42,7 +42,18 @@ route.post('/',function(req, res){
 });
 
 route.put('/:id',function(req, res){
-    
+   Product.findByIdAndUpdate(req.params.id, {
+        name : req.body.name,
+        description : req.body.description,
+        pricebuy : req.body.pricebuy,
+        update_at : Date.now(),
+        pricesell : req.body.pricesell,}, function(err, product){
+            if(err){
+                console.log(err);
+                return;
+            }
+            res.status(200).send(product);
+        }); 
 });
 
 route.delete('/:id',function(req, res){ //ejemplo de varios parametros '/:id/:nombre'
