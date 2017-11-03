@@ -1,0 +1,47 @@
+<h1 style="text-align : center;">Catálogo de Gatos</h1>
+<table>
+    <thead>
+        <th>Img</th>
+        <th>Name</th>
+        <th>Race</th>
+        <th>Description</th>
+        <th>Controls</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td><input type="text" [(ngModel)]="newcat[0].img"></td>
+            <td><input type="text" [(ngModel)]="newcat[0].name"></td>
+            <td><input type="text" [(ngModel)]="newcat[0].race"></td>
+            <td><input type="text" [(ngModel)]="newcat[0].description"></td>
+            <td><button (click) = "addCat()">Add</button></td>
+        </tr>
+    </tbody>
+</table>
+<br><br>
+<table>
+    <thead>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Race</th>
+        <th>Description</th>
+        <th>Controls</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let cat of cats; let index = index;">
+        <td (click)="setCurrentCat(cat)"><img [style.width.px] = "200" [style.padding.px] = "5" [src]="cat.img" alt=""></td>
+        <td><input [(ngModel)]="cat.name" type="text"></td>
+        <td><input [(ngModel)]="cat.description" type="text"></td>
+        <td><input [(ngModel)]="cat.race" type="text"></td>
+        <!--<td>{{cat.race | uppercase | convertToSpace: '-'}}</td>-->
+        <td>
+            <button (click)="updateCat(cat)">Edit</button>
+            <button (click) = "deleteCat(cat)">Delete</button>
+        </td>
+        
+    </tr>
+</tbody>
+</table>
+<div>
+    <!--<cat-description [cat]='currentCat'></cat-description>-->
+</div>
+
